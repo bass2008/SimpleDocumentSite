@@ -14,37 +14,21 @@ using System;
 namespace AlphaLeasing.Controllers
 {
     public class DocumentController : Controller
-    {
-        protected static ISessionFactory _sessionFactory = CreateSessionFactory();
-        
-
-        private readonly DocumentMapper _documentMapper;
+    {        
+        private readonly IDocumentMapper _documentMapper;
 
         private readonly IRepository<Document> _documentRepository;
 
         private readonly IUnitOfWork _unitOfWork;
 
-        private static ISessionFactory CreateSessionFactory()
+        public DocumentController(
+            IDocumentMapper documentMapper,
+            IRepository<Document> documentRepository,
+            IUnitOfWork unitOfWork)
         {
-            return Fluently
-                .Configure()
-                .Database(MsSqlConfiguration.MsSql2012.ConnectionString
-                         (@"Server=localhost\SQLEXPRESS;Database=testDb;Trusted_Connection=True"))
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DocumentsMap>())
-                .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, false))
-                .BuildSessionFactory();
-        }
-
-        public DocumentController()
-        {
-            var session = _sessionFactory.OpenSession();
-            var transaction = session.BeginTransaction();
-
-            _documentRepository = new GenericRepository<Document>(session);
-
-            _unitOfWork = new UnitOfWork(transaction);
-
-            _documentMapper = new DocumentMapper();
+            _documentRepository = documentRepository;
+            _unitOfWork = unitOfWork;
+            _documentMapper = documentMapper;
         }
 
         public ActionResult Add()

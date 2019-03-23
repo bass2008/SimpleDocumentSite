@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AlphaLeasing.Mapping
 {
-    public class DocumentMapper
+    public class DocumentMapper : IDocumentMapper
     {
         private const int MaxNameLength = 30;
         
