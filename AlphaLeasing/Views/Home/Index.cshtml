@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Главная";
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "ajax": '/Document',
+                "language": {
+                    "url": "Scripts/jquery.datatables.locale.js"
+                }
+            });
+        });
+    </script>
+}
+<br><br>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Дата</th>
+                    <th>Автор</th>
+                    <th>Ссылка</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Имя</th>
+                    <th>Дата</th>
+                    <th>Автор</th>
+                    <th>Ссылка</th>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
