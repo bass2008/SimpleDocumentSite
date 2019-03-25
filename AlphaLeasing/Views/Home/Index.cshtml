@@ -10,7 +10,19 @@
                 "ajax": '/Document',
                 "language": {
                     "url": "Scripts/jquery.datatables.locale.js"
-                }
+                },
+                "columnDefs": [
+                    {
+                        targets: 3,
+                        render: function (data, type, row) {
+                            console.log("re12");
+                            if (type === 'display') {
+                                data = "<a href='/Document/Get/" + data + "' >Скачать</a>";
+                            }
+                            return data;
+                        }
+                    }
+                ]
             });
         });
     </script>

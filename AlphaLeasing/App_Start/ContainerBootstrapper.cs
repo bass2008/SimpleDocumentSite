@@ -44,9 +44,13 @@ namespace AlphaLeasing.App_Start
                                    .UsingFactoryMethod(kernel => kernel.Resolve<ISession>().BeginTransaction())
                                    .LifestylePerWebRequest());
 
-            container.Register(Component.For(typeof(IRepository<>))
-                                   .ImplementedBy(typeof(GenericRepository<>))
-                                   .LifeStyle.Transient);
+            container.Register(Component.For<IUserRepository>()
+                       .ImplementedBy<UserRepository>()
+                       .LifeStyle.Transient);
+
+            container.Register(Component.For<IDocumentRepository>()
+                       .ImplementedBy<DocumentRepository>()
+                       .LifeStyle.Transient);
 
             container.Register(Component.For<IUnitOfWork>()
                        .ImplementedBy<UnitOfWork>()

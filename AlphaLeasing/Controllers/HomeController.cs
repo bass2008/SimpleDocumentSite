@@ -2,16 +2,12 @@
 
 namespace AlphaLeasing.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             return View();
-        }
-
-        public string Test()
-        {
-            return "hello";
-        }
+        }        
     }
 }

@@ -18,7 +18,7 @@ namespace AlphaLeasing.Mapping
 
             return mapped;
         }
-
+        
         public List<string> MapDocument(Document doc)
         {
             var listItem = new List<string>();
@@ -28,8 +28,8 @@ namespace AlphaLeasing.Mapping
 
             listItem.Add(mappedName);
             listItem.Add(doc.Date);
-            listItem.Add(doc.Author);
-            listItem.Add(doc.Link);
+            listItem.Add(doc.User.Login);
+            listItem.Add(doc.Id.ToString());
             return listItem;
         }
     }

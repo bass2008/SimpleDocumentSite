@@ -1,4 +1,3 @@
-using System;
 using WebActivatorEx;
 
 [assembly: PreApplicationStartMethod(typeof(AlphaLeasing.App_Start.WindsorActivator), "PreStart")]

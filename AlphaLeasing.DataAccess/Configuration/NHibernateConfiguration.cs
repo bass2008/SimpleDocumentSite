@@ -14,7 +14,7 @@ namespace AlphaLeasing.DataAccess.Configuration
                 .Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString
                          (@"Server=localhost\SQLEXPRESS;Database=testDb;Trusted_Connection=True"))
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<DocumentsMap>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UsersMap>())
                 .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, false))
                 .BuildSessionFactory();
         }

@@ -9,16 +9,21 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("Альфа Лизинг", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+            <ul class="nav navbar-nav">
+                @Html.ActionLink("Альфа Лизинг", "Index", "Home", new { area = "" }, new { @class = "navbar-brand active" })
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><span class="glyphicon glyphicon-user"></span> @User.Identity.Name</a></li>
+                <li><a href="/Account/Logout"><span class="glyphicon glyphicon-log-in"></span> Выйти</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
